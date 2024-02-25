@@ -7,7 +7,7 @@
 \title{The 'networkscaleup' package.}
 \description{
 Provides a variety of Network Scale-up Models for researchers to
-analyze Aggregated Relational Data, mostly through the use of Stan.
+  analyze Aggregated Relational Data, mostly through the use of Stan.
 }
 \references{
 Stan Development Team (2021). RStan: the R interface to Stan. R
@@ -28,4 +28,14 @@ Killworth, P. D., McCarty, C., Bernard, H. R., Shelley, G. A., and Johnsen,
 E. C. (1998). Estimation of Seroprevalence, Rape and Homelessness in the
 United States Using a Social Network Approach, \emph{Evaluation Review},
 \bold{22}, 289--308
+}
+\author{
+\strong{Maintainer}: Ian Laga \email{ilaga25@gmail.com} (\href{https://orcid.org/0000-0002-5164-4856}{ORCID})
+
+Authors:
+\itemize{
+  \item Le Bao \email{lebao@psu.edu}
+  \item Xiaoyue Niu \email{Xiaoyue@psu.edu}
+}
+
 }

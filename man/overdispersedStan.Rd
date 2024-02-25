@@ -22,9 +22,9 @@ overdispersedStan(
 )
 }
 \arguments{
-\item{ard}{The \verb{n_i x n_k} matrix of non-negative ARD integer responses,
-where the \verb{(i,k)th} element corresponds to the number of people that
-respondent \code{i} knows in subpopulation \code{k}.}
+\item{ard}{The `n_i x n_k` matrix of non-negative ARD integer responses,
+where the `(i,k)th` element corresponds to the number of people that
+respondent `i` knows in subpopulation `k`.}
 
 \item{known_sizes}{The known subpopulation sizes corresponding to a subset of
 the columns of \code{ard}.}
@@ -34,17 +34,17 @@ with known_sizes. By default, the function assumes the first \code{n_known}
 columns, where \code{n_known} corresponds to the number of
 \code{known_sizes}.}
 
-\item{G1_ind}{A vector of indices denoting the columns of \code{ard} that
+\item{G1_ind}{A vector of indices denoting the columns of `ard` that
 correspond to the primary scaling groups, i.e. the collection of rare
 girls' names in Zheng, Salganik, and Gelman (2006). By default, all
-known_sizes are used. If G2_ind and B2_ind are not provided, \code{C = C_1}, so
+known_sizes are used. If G2_ind and B2_ind are not provided, `C = C_1`, so
 only G1_ind are used. If G1_ind is not provided, no scaling is performed.}
 
-\item{G2_ind}{A vector of indices denoting the columns of \code{ard} that
+\item{G2_ind}{A vector of indices denoting the columns of `ard` that
 correspond to the subpopulations that belong to the first secondary scaling
 groups, i.e. the collection of somewhat popular girls' names.}
 
-\item{B2_ind}{A vector of indices denoting the columns of \code{ard} that
+\item{B2_ind}{A vector of indices denoting the columns of `ard` that
 correspond to the subpopulations that belong to the second secondary
 scaling groups, i.e. the collection of somewhat popular boys' names.}
 
@@ -72,22 +72,22 @@ FALSE by default.}
 }
 \value{
 Either the full fitted Stan model if \code{return_fit = TRUE}, else a
-named list with the estimated parameters extracted using
-\link[rstan]{extract} (the default). The estimated parameters are named as
-follows, with additional descriptions as needed:
+  named list with the estimated parameters extracted using
+  \link[rstan]{extract} (the default). The estimated parameters are named as
+  follows, with additional descriptions as needed:
 
-\describe{\item{alphas}{Log degree, if \code{scaling = TRUE}, else raw alpha parameters}
-\item{betas}{Log prevalence, if \code{scaling = TRUE}, else raw beta parameters}
-\item{inv_omegas}{Inverse of overdispersion parameters}
-\item{sigma_alpha}{Standard deviation of alphas}
-\item{mu_beta}{Mean of betas}
-\item{sigma_beta}{Standard deviation of betas}
-\item{omegas}{Overdispersion parameters}}
+  \describe{\item{alphas}{Log degree, if `scaling = TRUE`, else raw alpha parameters}
+  \item{betas}{Log prevalence, if `scaling = TRUE`, else raw beta parameters}
+  \item{inv_omegas}{Inverse of overdispersion parameters}
+  \item{sigma_alpha}{Standard deviation of alphas}
+  \item{mu_beta}{Mean of betas}
+  \item{sigma_beta}{Standard deviation of betas}
+  \item{omegas}{Overdispersion parameters}}
 
-If \code{scaling = TRUE}, the following additional parameters are included:
-\describe{\item{mu_alpha}{Mean of log degrees}
-\item{degrees}{Degree estimates}
-\item{sizes}{Subpopulation size estimates}}
+  If `scaling = TRUE`, the following additional parameters are included:
+  \describe{\item{mu_alpha}{Mean of log degrees}
+  \item{degrees}{Degree estimates}
+  \item{sizes}{Subpopulation size estimates}}
 }
 \description{
 This function fits the ARD using the Overdispersed model in Stan. The
@@ -97,7 +97,7 @@ For the Gibbs-Metropolis algorithm implementation, see
 }
 \details{
 This function fits the overdispersed NSUM model using the
-Gibbs-Metropolis algorithm provided in Zheng et al. (2006).
+  Gibbs-Metropolis algorithm provided in Zheng et al. (2006).
 }
 \examples{
 # Analyze an example ard data set using Zheng et al. (2006) models
@@ -135,6 +135,6 @@ colMeans(overdisp.est$omegas)
 }
 \references{
 Zheng, T., Salganik, M. J., and Gelman, A. (2006). How many
-people do you know in prison, \emph{Journal of the American Statistical
-Association}, \bold{101:474}, 409--423
+  people do you know in prison, \emph{Journal of the American Statistical
+  Association}, \bold{101:474}, 409--423
 }

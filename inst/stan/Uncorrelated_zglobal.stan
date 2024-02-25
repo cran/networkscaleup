@@ -4,7 +4,7 @@ data {
   int<lower=0> n_k;
   int<lower=0> z_global_size;
   matrix[n_i, z_global_size] z_global;
-  int y[n_i,n_k];
+  array[n_i,n_k] int y;
 }
 
 parameters {
@@ -23,9 +23,9 @@ transformed parameters {
   vector[n_k] tau;
   matrix[n_i,n_k] bias;
   matrix[n_i,n_k] prev_mean = exp(rep_matrix(rho, n_i)' + rep_matrix(sigma_delta * delta + z_global * beta_global, n_k));
-  
-  mu = log(1.0 ./ sqrt(1.0 + 1.0 ./ square(tau_N)));
-  tau = sqrt(log(1.0 + 1.0 ./ square(tau_N)));
+
+  mu = log(1.0 ./ sqrt(1.0 + square(tau_N)));
+  tau = sqrt(log(1.0 + square(tau_N)));
   for(k in 1:n_k){
 	bias[,k] = exp(mu[k] + tau[k] * eps[,k]);
   }
@@ -40,7 +40,7 @@ model {
   sigma_rho ~ cauchy(0, 2.5); // Half-cauchy suggested in stan-users-guide
   mu_rho ~ normal(0, 10);
   rho ~ normal(mu_rho, sigma_rho);
-  
+
   for(k in 1:n_k){
     y[,k] ~ poisson(prev_mean[,k] .* bias[,k]);
   }

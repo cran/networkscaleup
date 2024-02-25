@@ -14,9 +14,9 @@ killworth(
 )
 }
 \arguments{
-\item{ard}{The \verb{n_i x n_k} matrix of non-negative ARD integer responses,
-where the \verb{(i,k)th} element corresponds to the number of people that
-respondent \code{i} knows in subpopulation \code{k}.}
+\item{ard}{The `n_i x n_k` matrix of non-negative ARD integer responses,
+where the `(i,k)th` element corresponds to the number of people that
+respondent `i` knows in subpopulation `k`.}
 
 \item{known_sizes}{The known subpopulation sizes corresponding to a subset of
 the columns of \code{ard}.}
@@ -65,16 +65,16 @@ pimle = pimle.est$sizes)
 }
 \references{
 Killworth, P. D., Johnsen, E. C., McCarty, C., Shelley, G. A.,
-and Bernard, H. R. (1998). A Social Network Approach to Estimating
-Seroprevalence in the United States, \emph{Social Networks}, \bold{20},
-23--50
+  and Bernard, H. R. (1998). A Social Network Approach to Estimating
+  Seroprevalence in the United States, \emph{Social Networks}, \bold{20},
+  23--50
 
-Killworth, P. D., McCarty, C., Bernard, H. R., Shelley, G. A., and Johnsen,
-E. C. (1998). Estimation of Seroprevalence, Rape and Homelessness in the
-United States Using a Social Network Approach, \emph{Evaluation Review},
-\bold{22}, 289--308
+  Killworth, P. D., McCarty, C., Bernard, H. R., Shelley, G. A., and Johnsen,
+  E. C. (1998). Estimation of Seroprevalence, Rape and Homelessness in the
+  United States Using a Social Network Approach, \emph{Evaluation Review},
+  \bold{22}, 289--308
 
-Laga, I., Bao, L., and Niu, X. (2021). Thirty Years of the Network Scale-up
-Method, \emph{Journal of the American Statistical Association},
-\bold{116:535}, 1548--1559
+  Laga, I., Bao, L., and Niu, X. (2021). Thirty Years of the Network Scale-up
+  Method, \emph{Journal of the American Statistical Association},
+  \bold{116:535}, 1548--1559
 }

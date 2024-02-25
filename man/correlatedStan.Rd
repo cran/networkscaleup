@@ -30,9 +30,9 @@ correlatedStan(
 )
 }
 \arguments{
-\item{ard}{The \verb{n_i x n_k} matrix of non-negative ARD integer responses,
-where the \verb{(i,k)th} element corresponds to the number of people that
-respondent \code{i} knows in subpopulation \code{k}.}
+\item{ard}{The `n_i x n_k` matrix of non-negative ARD integer responses,
+where the `(i,k)th` element corresponds to the number of people that
+respondent `i` knows in subpopulation `k`.}
 
 \item{known_sizes}{The known subpopulation sizes corresponding to a subset of
 the columns of \code{ard}.}
@@ -51,39 +51,39 @@ based on the covariates provided below.}
 
 \item{scaling}{An optional character vector providing the name of scaling
 procedure should be performed in order to transform estimates to degrees
-and subpopulation sizes. If \code{NULL}, the parameters will be returned
+and subpopulation sizes. If `NULL`, the parameters will be returned
 unscaled. Alternatively, scaling may be performed independently using the
-\link[networkscaleup]{scaling} function. Scaling options are \code{NULL},
-\code{overdispersed}, \code{all}, \code{weighted}, or \code{weighted_sq} (\code{weighted} and
-\code{weighted_sq} are only available if \code{model = "correlated"}. Further details
+\link[networkscaleup]{scaling} function. Scaling options are `NULL`,
+`overdispersed`, `all`, `weighted`, or `weighted_sq` (`weighted` and
+`weighted_sq` are only available if `model = "correlated"`. Further details
 are provided in the Details section.}
 
-\item{x}{A matrix with dimensions \verb{n_i x n_unknown}, where \code{n_unknown} refers
+\item{x}{A matrix with dimensions `n_i x n_unknown`, where `n_unknown` refers
 to the number of unknown subpopulation sizes. In the language of Teo et al.
 (2019), these represent the individual's perception of each hidden
 population.}
 
-\item{z_global}{A matrix with dimensions \verb{n_i x p_global}, where \code{p_global}
+\item{z_global}{A matrix with dimensions `n_i x p_global`, where `p_global`
 is the number of demographic covariates used. This matrix represents the
 demographic information about the respondents in order to capture the
 barrier effects.}
 
-\item{z_subpop}{A matrix with dimensions \verb{n_i x p_subpop}, where \code{p_subpop}
+\item{z_subpop}{A matrix with dimensions `n_i x p_subpop`, where `p_subpop`
 is the number of demographic covariates used. This matrix represents the
 demographic information about the respondents in order to capture the
 barrier effects.}
 
-\item{G1_ind}{A vector of indices denoting the columns of \code{ard} that
+\item{G1_ind}{A vector of indices denoting the columns of `ard` that
 correspond to the primary scaling groups, i.e. the collection of rare
 girls' names in Zheng, Salganik, and Gelman (2006). By default, all
-known_sizes are used. If G2_ind and B2_ind are not provided, \code{C = C_1}, so
+known_sizes are used. If G2_ind and B2_ind are not provided, `C = C_1`, so
 only G1_ind are used. If G1_ind is not provided, no scaling is performed.}
 
-\item{G2_ind}{A vector of indices denoting the columns of \code{ard} that
+\item{G2_ind}{A vector of indices denoting the columns of `ard` that
 correspond to the subpopulations that belong to the first secondary scaling
 groups, i.e. the collection of somewhat popular girls' names.}
 
-\item{B2_ind}{A vector of indices denoting the columns of \code{ard} that
+\item{B2_ind}{A vector of indices denoting the columns of `ard` that
 correspond to the subpopulations that belong to the second secondary
 scaling groups, i.e. the collection of somewhat popular boys' names.}
 
@@ -101,31 +101,31 @@ each chain. Matches the usage in \link[rstan]{stan}.}
 \item{thin}{A positive integer specifying the interval for saving posterior
 samples. Default value is 1 (i.e. no thinning).}
 
-\item{return_fit}{A logical indicating whether the fitted \code{stanfit} object
-should be return. Defaults to \code{FALSE}.}
+\item{return_fit}{A logical indicating whether the fitted `stanfit` object
+should be return. Defaults to `FALSE`.}
 
 \item{...}{Additional arguments to be passed to \link[rstan]{stan}.}
 }
 \value{
 Either the full fitted Stan model if \code{return_fit = TRUE}, else a
-named list with the estimated parameters extracted using
-\link[rstan]{extract} (the default). The estimated parameters are named as
-follows (if estimated in the corresponding model), with additional
-descriptions as needed:
+  named list with the estimated parameters extracted using
+  \link[rstan]{extract} (the default). The estimated parameters are named as
+  follows (if estimated in the corresponding model), with additional
+  descriptions as needed:
 
-\describe{\item{delta}{Raw delta parameters} \item{sigma_delta}{Standard
-deviation of delta} \item{rho}{Log prevalence, if scaled, else raw rho
-parameters} \item{mu_rho}{Mean of rho} \item{sigma_rho}{Standard deviation
-of rho} \item{alpha}{Slope parameters corresponding to z}
-\item{beta_global}{Slope parameters corresponding to x_global}
-\item{beta_subpop}{Slope parameters corresponding to x_subpop}
-\item{tau_N}{Standard deviation of random effects b}
-\item{Corr}{Correlation matrix, if \code{Correlation = TRUE}}}
+  \describe{\item{delta}{Raw delta parameters} \item{sigma_delta}{Standard
+  deviation of delta} \item{rho}{Log prevalence, if scaled, else raw rho
+  parameters} \item{mu_rho}{Mean of rho} \item{sigma_rho}{Standard deviation
+  of rho} \item{alpha}{Slope parameters corresponding to z}
+  \item{beta_global}{Slope parameters corresponding to x_global}
+  \item{beta_subpop}{Slope parameters corresponding to x_subpop}
+  \item{tau_N}{Standard deviation of random effects b}
+  \item{Corr}{Correlation matrix, if `Correlation = TRUE`}}
 
-If scaled, the following additional parameters are included:
-\describe{\item{log_degrees}{Scaled log degrees} \item{degree}{Scaled
-degrees} \item{log_prevalences}{Scaled log prevalences}
-\item{sizes}{Subpopulation size estimates}}
+  If scaled, the following additional parameters are included:
+  \describe{\item{log_degrees}{Scaled log degrees} \item{degree}{Scaled
+  degrees} \item{log_prevalences}{Scaled log prevalences}
+  \item{sizes}{Subpopulation size estimates}}
 }
 \description{
 Fit ARD using the uncorrelated or correlated model in Stan
@@ -135,22 +135,22 @@ scaled using a post-hoc procedure.
 }
 \details{
 This function currently fits a variety of models proposed in Laga et
-al. (2022+). The user may provide any combination of \code{x}, \code{z_global}, and
-\code{z_subpop}. Additionally, the user may choose to fit a uncorrelated version
-of the model, where the correlation matrix is equal to the identity matrix.
+  al. (2022+). The user may provide any combination of `x`, `z_global`, and
+  `z_subpop`. Additionally, the user may choose to fit a uncorrelated version
+  of the model, where the correlation matrix is equal to the identity matrix.
 
-The \code{scaling} options are described below: \describe{\item{NULL}{No scaling
-is performed} \item{overdispersed}{The scaling procedure outlined in Zheng
-et al. (2006) is performed. In this case, at least \code{Pg1_ind} must be
-provided. See \link[networkscaleup]{overdispersedStan} for more details.}
-\item{all}{All subpopulations with known sizes are used to scale the
-parameters, using a modified scaling procedure that standardizes the sizes
-so each population is weighted equally. Additional details are provided in
-Laga et al. (2022+).} \item{weighted}{All subpopulations with known sizes
-are weighted according their correlation with the unknown subpopulation
-size. Additional details are provided in Laga et al. (2022+)}
-\item{weighted_sq}{Same as \code{weighted}, except the weights are squared,
-providing more relative weight to subpopulations with higher correlation.}}
+  The `scaling` options are described below: \describe{\item{NULL}{No scaling
+  is performed} \item{overdispersed}{The scaling procedure outlined in Zheng
+  et al. (2006) is performed. In this case, at least `Pg1_ind` must be
+  provided. See \link[networkscaleup]{overdispersedStan} for more details.}
+  \item{all}{All subpopulations with known sizes are used to scale the
+  parameters, using a modified scaling procedure that standardizes the sizes
+  so each population is weighted equally. Additional details are provided in
+  Laga et al. (2022+).} \item{weighted}{All subpopulations with known sizes
+  are weighted according their correlation with the unknown subpopulation
+  size. Additional details are provided in Laga et al. (2022+)}
+  \item{weighted_sq}{Same as `weighted`, except the weights are squared,
+  providing more relative weight to subpopulations with higher correlation.}}
 }
 \examples{
 \dontrun{
@@ -216,5 +216,5 @@ colMeans(cov_corr_est$alpha)
 }
 \references{
 Laga, I., Bao, L., and Niu, X (2021). A Correlated Network
-Scaleup Model: Finding the Connection Between Subpopulations
+  Scaleup Model: Finding the Connection Between Subpopulations
 }

@@ -26,9 +26,9 @@ either the overdispersed or correlated models.}
 
 \item{scaling}{An character vector providing the name of scaling procedure
 should be performed in order to transform estimates to degrees and
-subpopulation sizes. Scaling options are \code{overdispersed}, \code{all} (the
-default), \code{weighted}, or \code{weighted_sq} (\code{weighted} and \code{weighted_sq} are
-only available if \code{Correlation} is provided. Further details are provided
+subpopulation sizes. Scaling options are `overdispersed`, `all` (the
+default), `weighted`, or `weighted_sq` (`weighted` and `weighted_sq` are
+only available if `Correlation` is provided. Further details are provided
 in the Details section.}
 
 \item{known_sizes}{The known subpopulation sizes corresponding to a subset of
@@ -40,20 +40,20 @@ columns, where \code{n_known} corresponds to the number of
 \code{known_sizes}.}
 
 \item{Correlation}{The estimated correlation matrix used to calculate scaling
-weights. Required if \code{scaling = weighted} or \code{scaling = weighted_sq}.}
+weights. Required if `scaling = weighted` or `scaling = weighted_sq`.}
 
-\item{G1_ind}{If \code{scaling = overdispersed}, a vector of indices corresponding
+\item{G1_ind}{If `scaling = overdispersed`, a vector of indices corresponding
 to the subpopulations that belong to the primary scaling groups, i.e. the
 collection of rare girls' names in Zheng, Salganik, and Gelman (2006). By
 default, all known_sizes are used. If G2_ind and B2_ind are not provided,
-\code{C = C_1}, so only G1_ind are used. If G1_ind is not provided, no scaling
+`C = C_1`, so only G1_ind are used. If G1_ind is not provided, no scaling
 is performed.}
 
-\item{G2_ind}{If \code{scaling = overdispersed}, a vector of indices corresponding
+\item{G2_ind}{If `scaling = overdispersed`, a vector of indices corresponding
 to the subpopulations that belong to the first secondary scaling groups,
 i.e. the collection of somewhat popular girls' names.}
 
-\item{B2_ind}{If \code{scaling = overdispersed}, a vector of indices corresponding
+\item{B2_ind}{If `scaling = overdispersed`, a vector of indices corresponding
 to the subpopulations that belong to the second secondary scaling groups,
 i.e. the collection of somewhat popular boys' names.}
 
@@ -61,31 +61,31 @@ i.e. the collection of somewhat popular boys' names.}
 }
 \value{
 The named list containing the scaled log degree, degree, log
-prevalence, and size estimates
+  prevalence, and size estimates
 }
 \description{
 This function scales estimates from either the overdispersed model or from
 the correlated models. Several scaling options are available.
 }
 \details{
-The \code{scaling} options are described below: \describe{\item{NULL}{No
-scaling is performed} \item{overdispersed}{The scaling procedure outlined
-in Zheng et al. (2006) is performed. In this case, at least \code{Pg1_ind} must
-be provided. See \link[networkscaleup]{overdispersedStan} for more
-details.} \item{all}{All subpopulations with known sizes are used to scale
-the parameters, using a modified scaling procedure that standardizes the
-sizes so each population is weighted equally. Additional details are
-provided in Laga et al. (2021).} \item{weighted}{All subpopulations with
-known sizes are weighted according their correlation with the unknown
-subpopulation size. Additional details are provided in Laga et al. (2021)}
-\item{weighted_sq}{Same as \code{weighted}, except the weights are squared,
-providing more relative weight to subpopulations with higher correlation.}}
+The `scaling` options are described below: \describe{\item{NULL}{No
+  scaling is performed} \item{overdispersed}{The scaling procedure outlined
+  in Zheng et al. (2006) is performed. In this case, at least `Pg1_ind` must
+  be provided. See \link[networkscaleup]{overdispersedStan} for more
+  details.} \item{all}{All subpopulations with known sizes are used to scale
+  the parameters, using a modified scaling procedure that standardizes the
+  sizes so each population is weighted equally. Additional details are
+  provided in Laga et al. (2021).} \item{weighted}{All subpopulations with
+  known sizes are weighted according their correlation with the unknown
+  subpopulation size. Additional details are provided in Laga et al. (2021)}
+  \item{weighted_sq}{Same as `weighted`, except the weights are squared,
+  providing more relative weight to subpopulations with higher correlation.}}
 }
 \references{
 Zheng, T., Salganik, M. J., and Gelman, A. (2006). How many
-people do you know in prison, \emph{Journal of the American Statistical
-Association}, \bold{101:474}, 409--423
+  people do you know in prison, \emph{Journal of the American Statistical
+  Association}, \bold{101:474}, 409--423
 
-Laga, I., Bao, L., and Niu, X (2021). A Correlated Network Scaleup Model:
-Finding the Connection Between Subpopulations
+  Laga, I., Bao, L., and Niu, X (2021). A Correlated Network Scaleup Model:
+  Finding the Connection Between Subpopulations
 }
